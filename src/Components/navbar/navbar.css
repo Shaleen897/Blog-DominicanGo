@@ -1,0 +1,70 @@
+.navback .nav-menu{
+ display: flex;
+}
+
+.hamburger{
+    display: none;
+}
+.rightnav{
+    display: flex;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+}
+.logout{
+    display: none;    
+}
+
+@media screen and (max-width:1024px) {
+    .logout{
+        display: block;    
+    }
+    
+    .rightnav{
+        display: none;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    .navback .nav-menu{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background: rgba(22, 22, 22, 0.986);
+        height: 98.3%;
+        width: 100%;
+        z-index: 10;
+        top: 60px;
+        align-items: center;
+        right: 100%;
+        font-size: 40px;
+        transition: 0.4s ease-in-out;
+
+    }
+    
+    .navback ul li{
+        margin: 20px 0px 0px 0px;
+    }
+
+    .navback ul li:hover{
+        width: 100%;
+        transition: 0.4s ease-in-out;
+    }
+
+    .navback .active{
+        right: 0;
+    }
+}
+
+.active{
+    background: #9da1a771;
+}
