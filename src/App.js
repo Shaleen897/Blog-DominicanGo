@@ -12,6 +12,7 @@ import { signOut } from "firebase/auth";
 import { NotFound } from "./Components/pages/NotFound";
 import CreateEditBlog from "./Components/pages/CreateEditBlog";
 import Detail from "./Components/pages/Detail";
+import Info from "./Components/pages/Info";
 
 function App() {
 
@@ -47,13 +48,14 @@ function App() {
         user={user}
         handleLogout={handleLogout}
         />
-        <ToastContainer position="top-center" />
+        
          <Routes>
          <Route path='/' element={<Home setActive={setActive} user={user} />}/>
          <Route path="/detail/:id" element={<Detail setActive={setActive} />} />
          <Route path="/crear" element={ user?.uid ? <CreateEditBlog user={user} /> : <Navigate to="/"/>}/>
          <Route path="/update/:id" element={ user?.uid ? <CreateEditBlog user={user} setActive={setActive} /> : <Navigate to="/" />}/>
           <Route path={user ? '/' : '/login'} element={<Auth setActive={setActive} setUser={setUser} />}/>
+          <Route path="info" element={<Info />} />
           <Route path="*" element={<NotFound />} />
          </Routes>
       </div>

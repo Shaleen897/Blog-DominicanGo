@@ -6,11 +6,25 @@
 
 .navback {
   background: rgba(0, 0, 0, 0.432);
+
 }
 
+@media screen and (min-width:1000px) {
+  
+  .fixer{
+    display: flex;
+  }
+}
 
+@media screen and (max-width:400px) {
+  
+  .resp{
+    width: 380px;
+  }
+  
+}
 
-@media screen and (max-width:1041px) {
+@media screen and (max-width:1300px) {
   .responsiveD{
     width: 100%;
   }
@@ -40,6 +54,14 @@
 
   .responsive-text{
     transform: translateY(-200px);
+  }
+
+  .detail{
+    position: unset;
+  }
+
+  .bgblack{
+    background: transparent;
   }
 }
 

@@ -19,6 +19,7 @@ const Auth = ({ setActive, setUser }) => {
   const [signUp, setSignUp] = useState(false);
   const { login, signup} = useUserAuth();
   const { email, password, firstName, lastName, confirmPassword } = state;
+  const [checking, setchecking] = useState(false);
   
   const [firstname, setFirstName] = useState("");
   const navigate = useNavigate();
@@ -54,9 +55,10 @@ const Auth = ({ setActive, setUser }) => {
     navigate("/");
   }
 
+  console.log(checking)
   return (
-    <div className="flex min-h-[93.7%] items-center navback justify-center  px-4 sm:px-6 lg:px-8">
-  <div className="w-full max-w-md space-y-8">
+    <div className="w-full flex min-h-[93.7%] items-center h-[93.7vh] navback justify-center  px-4 sm:px-6 lg:px-8">
+     <div className="w-full max-w-lg space-y-8 bg-[#00000073] rounded p-5 ">
     <div>
       <SiGnuprivacyguard className='mx-auto h-20 w-auto text-blue-600' />
       {!signUp ? <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">Log In</h2> : <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">Crea Tu Propia Cuenta</h2>}
@@ -98,8 +100,8 @@ const Auth = ({ setActive, setUser }) => {
       {!signUp &&
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
-          <label htmlFor="remember-me" className="ml-2 block font-bold text-sm text-black-900">Remember me</label>
+          <input id="remember-me" name="remember-me" onClick={() => setchecking(!checking)} type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
+          <label htmlFor="remember-me" className="text-white ml-2 block font-bold text-sm text-black-900">Remember me</label>
         </div> 
        
 
@@ -124,11 +126,11 @@ const Auth = ({ setActive, setUser }) => {
     {!signUp ? (
                 <>
                   <div className="text-center justify-content-center mt-2 pt-2">
-                    <p className="small  font-bold mt-2 pt-1 mb-0">
+                    <p className="small  font-bold mt-2 pt-1 mb-0 text-white">
                       Don't have an account ?&nbsp;
                       <span
-                        className="link-danger"
-                        style={{ textDecoration: "none", cursor: "pointer", color: "white", }}
+                        className="link-danger text-indigo-600"
+                        style={{ textDecoration: "none", cursor: "pointer", }}
                         onClick={() => setSignUp(true)}
                       >
                         Sign Up

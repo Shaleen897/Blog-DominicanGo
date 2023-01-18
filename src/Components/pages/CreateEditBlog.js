@@ -164,7 +164,7 @@ const CreateEditBlog = ({ user, setActive }) => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="py-3 flex justify-center">
+              <div className="py-3  hidden">
                 <ReactTagInput
                   tags={tags}
                   placeholder="Tags"

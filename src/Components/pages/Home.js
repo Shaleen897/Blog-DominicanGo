@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { CardTrending } from "./CardTrending";
 import Spinner from "../Spinner";
-import { toast } from "react-toastify";
-import { Tags } from "./Tags";
+//import { toast } from "react-toastify";
+//import { Tags } from "./Tags";
 import {
   collection,
   deleteDoc,
@@ -19,7 +19,7 @@ import MostPopular from "./MostPopular";
 const Home = ({ setActive, user }) => {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
-  const [tags, setTags] = useState([]);
+  //const [tags, setTags] = useState([]);
   const [trendBlogs, setTrendBlogs] = useState([]);
 
   const getTrendingBlogs = async () => {
@@ -44,8 +44,8 @@ const Home = ({ setActive, user }) => {
           tags.push(...doc.get("tags"));
           list.push({ id: doc.id, ...doc.data() });
         });
-        const uniqueTags = [...new Set(tags)];
-        setTags(uniqueTags);
+      //  const uniqueTags = [...new Set(tags)];
+      //  setTags(uniqueTags);
         setBlogs(list);
         setLoading(false);
         setActive("home");
@@ -70,7 +70,6 @@ const Home = ({ setActive, user }) => {
       try {
         setLoading(true);
         await deleteDoc(doc(db, "blogs", id));
-        toast.success("Blog deleted successfully");
         setLoading(false);
       } catch (err) {
         console.log(err);
