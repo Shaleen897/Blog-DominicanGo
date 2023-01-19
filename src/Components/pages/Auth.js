@@ -19,9 +19,9 @@ const Auth = ({ setActive, setUser }) => {
   const [signUp, setSignUp] = useState(false);
   const { login, signup} = useUserAuth();
   const { email, password, firstName, lastName, confirmPassword } = state;
-  const [checking, setchecking] = useState(false);
+
   
-  const [firstname, setFirstName] = useState("");
+  //const [firstname, setFirstName] = useState("");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -46,7 +46,7 @@ const Auth = ({ setActive, setUser }) => {
 
         const {user} = await signup(email, password);
 
-        await updateProfile(user, { displayName: `${firstname} ${lastName}` });
+        await updateProfile(user, { displayName: `${firstName} ${lastName}` });
         setActive("/");
       } else {
         return console.log("All fields are mandatory to fill");
@@ -55,7 +55,6 @@ const Auth = ({ setActive, setUser }) => {
     navigate("/");
   }
 
-  console.log(checking)
   return (
     <div className="w-full flex min-h-[93.7%] items-center h-[93.7vh] navback justify-center  px-4 sm:px-6 lg:px-8">
      <div className="w-full max-w-lg space-y-8 bg-[#00000073] rounded p-5 ">
@@ -74,9 +73,9 @@ const Auth = ({ setActive, setUser }) => {
       {signUp &&
       <div  className='flex mb-5'>
           <label htmlFor="firstname" className="sr-only">First Name</label>
-          <input id="firstname" name="firstname" type="text" autoComplete="firstName" onChange={(e) => {setFirstName(e.target.value)}} required className="relative block w-[50%] mr-5 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="First Name"/>
-          <label htmlFor="lasttname" className="sr-only">Last Name</label>
-          <input id="lasttname" name="lasttname" type="text" autoComplete="lasttname" value={lastName} onChange={handleChange} required className="relative block w-[50%] appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Last Name"/>
+          <input id="firstname" name="firstName" type="text" autoComplete="firstName" onChange={handleChange} required className="relative block w-[50%] mr-5 appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="First Name"/>
+          <label htmlFor="lastname" className="sr-only">Last Name</label>
+          <input id="lastname" name="lastName" type="text" autoComplete="lastName" value={lastName} onChange={handleChange} required className="relative block w-[50%] appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Last Name"/>
         
         </div>
         }
@@ -90,8 +89,8 @@ const Auth = ({ setActive, setUser }) => {
         </div>
         {signUp &&
         <div>
-          <label htmlFor="confirmpassword" className="sr-only">Confirm Password</label>
-          <input id="confirmpassword" name="confirmpassword" type="password" autoComplete="current-password" value={confirmPassword} onChange={handleChange} required className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Confirm Password"/>
+          <label htmlFor="confirmPassword" className="sr-only">Confirm Password</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" autoComplete="confirmPassword" value={confirmPassword} onChange={handleChange} required className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" placeholder="Confirm Password"/>
         </div>
         } 
       </div>
@@ -100,7 +99,7 @@ const Auth = ({ setActive, setUser }) => {
       {!signUp &&
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <input id="remember-me" name="remember-me" onClick={() => setchecking(!checking)} type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
+          <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
           <label htmlFor="remember-me" className="text-white ml-2 block font-bold text-sm text-black-900">Remember me</label>
         </div> 
        
